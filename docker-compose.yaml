@@ -1,3 +1,16 @@
 services:
   db:
-    image: postgres:12.3
+    image: postgres:latest
+    container_name: db
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: adminsenha
+      POSTGRES_DB: event-clean-db
+    volumes:
+      - pgdata:/var/lib/postgresql
+
+volumes:
+  pgdata:
