@@ -1,1 +1,7 @@
-spring.application.name=EventClean
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/event-clean-db
+    username: admin
+    password: adminsenha
+  flyway:
+    enabled: true
