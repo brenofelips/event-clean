@@ -2,14 +2,14 @@ package com.dev.java.EventClean.core.entities;
 
 import com.dev.java.EventClean.core.enums.TipoEvento;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
-public record Event(UUID id,
+public record Event(Long id,
                     String descricao,
                     String identificador,
                     LocalDateTime inicio,
                     LocalDateTime fim,
-                    String local,
+                    String localEvento,
                     Integer capacidade,
+                    String organizador,
                     TipoEvento tipoEvento
 ) {}
