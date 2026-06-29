@@ -4,10 +4,11 @@ import com.dev.java.EventClean.core.enums.TipoEvento;
 import java.time.LocalDateTime;
 
 public record Event(Long id,
+                    String nome,
                     String descricao,
                     String identificador,
-                    LocalDateTime inicio,
-                    LocalDateTime fim,
+                    LocalDateTime dataInicio,
+                    LocalDateTime dataFim,
                     String localEvento,
                     Integer capacidade,
                     String organizador,
