@@ -20,7 +20,7 @@ public class CriarEventoUsecaseImpl implements CriarEventoUsecase {
 
     events.forEach(evt -> {
       if (Objects.equals(evt.identificador(), event.identificador())) {
-        throw new DuplicateKeyException("O identificador de ser único!");
+        throw new DuplicateKeyException("O identificador " + event.identificador() + " já está em uso.");
       }
     });
     return eventGateway.criarEvento(event);
