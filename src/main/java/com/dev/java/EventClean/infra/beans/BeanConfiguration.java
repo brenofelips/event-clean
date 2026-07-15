@@ -5,6 +5,8 @@ import com.dev.java.EventClean.core.usecases.BuscarEventoUsecase;
 import com.dev.java.EventClean.core.usecases.BuscarEventoUsecaseImpl;
 import com.dev.java.EventClean.core.usecases.CriarEventoUsecase;
 import com.dev.java.EventClean.core.usecases.CriarEventoUsecaseImpl;
+import com.dev.java.EventClean.core.usecases.FiltraPorIdentificadorUsecase;
+import com.dev.java.EventClean.core.usecases.FiltraPorIdentificadorUsecaseImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -19,5 +21,10 @@ public class BeanConfiguration {
   @Bean
   public BuscarEventoUsecase buscarEventoUsecase(EventGateway eventGateway) {
     return new BuscarEventoUsecaseImpl(eventGateway);
+  }
+
+  @Bean
+  public FiltraPorIdentificadorUsecase filtraPorIdentificadorUsecase(EventGateway eventGateway) {
+    return new FiltraPorIdentificadorUsecaseImpl(eventGateway);
   }
 }

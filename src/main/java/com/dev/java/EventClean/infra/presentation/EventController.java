@@ -3,14 +3,14 @@ package com.dev.java.EventClean.infra.presentation;
 import com.dev.java.EventClean.core.entities.Event;
 import com.dev.java.EventClean.core.usecases.BuscarEventoUsecase;
 import com.dev.java.EventClean.core.usecases.CriarEventoUsecase;
+import com.dev.java.EventClean.core.usecases.FiltraPorIdentificadorUsecase;
 import com.dev.java.EventClean.infra.dtos.EventDto;
 import com.dev.java.EventClean.infra.mapper.EventDtoMapper;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,11 +21,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class EventController {
   private final CriarEventoUsecase criarEventoUsecase;
   private final BuscarEventoUsecase buscarEventoUsecase;
+  private final FiltraPorIdentificadorUsecase filtraPorIdentificadorUsecase;
   private final EventDtoMapper mapper;
 
-  public EventController(CriarEventoUsecase criarEventoUsecase, BuscarEventoUsecase buscarEventoUsecase, EventDtoMapper mapper) {
+  public EventController(CriarEventoUsecase criarEventoUsecase, BuscarEventoUsecase buscarEventoUsecase,
+                         FiltraPorIdentificadorUsecase filtraPorIdentificadorUsecase, EventDtoMapper mapper) {
     this.criarEventoUsecase = criarEventoUsecase;
     this.buscarEventoUsecase = buscarEventoUsecase;
+    this.filtraPorIdentificadorUsecase = filtraPorIdentificadorUsecase;
     this.mapper = mapper;
   }
 
@@ -40,5 +43,11 @@ public class EventController {
   public List<EventDto> buscarEventos() {
     List<Event> events = buscarEventoUsecase.execute();
     return mapper.toDto(events);
+  }
+
+  @GetMapping("buscar-evento-by-identificador/{identificador}")
+  public EventDto buscarEventoPorIdentificador(@PathVariable String identificador) {
+    Event event = filtraPorIdentificadorUsecase.execute(identificador);
+    return mapper.toDto(event);
   }
 }

@@ -6,4 +6,5 @@ import java.util.List;
 public interface EventGateway {
   Event criarEvento(Event event);
   List<Event> buscarEventos();
+  Event buscarEventoPorIdentificador(String identificador);
 }

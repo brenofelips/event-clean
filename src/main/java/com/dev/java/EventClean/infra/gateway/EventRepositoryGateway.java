@@ -31,4 +31,9 @@ public class EventRepositoryGateway implements EventGateway {
     List<EventEntity> eventEntityList = eventReporsitory.findAll();
     return mapper.toDomain(eventEntityList);
   }
+
+  @Override
+  public Event buscarEventoPorIdentificador(String identificador) {
+    return eventReporsitory.findAllByIdentificador(identificador);
+  }
 }
