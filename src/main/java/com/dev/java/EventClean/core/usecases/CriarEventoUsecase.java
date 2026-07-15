@@ -2,6 +2,6 @@ package com.dev.java.EventClean.core.usecases;
 
 import com.dev.java.EventClean.core.entities.Event;
 
-public interface criarEventoCase {
+public interface CriarEventoUsecase {
   Event execute(Event event);
 }
