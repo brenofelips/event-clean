@@ -2,14 +2,14 @@
 
 CREATE TABLE IF NOT EXISTS Eventos
 (
-    id           BIGSERIAL primary key,
-    nome         VARCHAR(255) not null,
-    descricao    TEXT         not null,
-    idenficador  VARCHAR(255) not null unique,
-    data_incio   TIMESTAMP    not null,
-    data_fim     TIMESTAMP    not null,
-    local_evento VARCHAR(255) not null,
-    capacidade   INTEGER      not null,
-    organizador  VARCHAR(255) not null,
-    tipo_evento  VARCHAR(50)
+    id            BIGSERIAL primary key,
+    nome          VARCHAR(255) not null,
+    descricao     TEXT         not null,
+    identificador VARCHAR(255) not null unique,
+    data_inicio   TIMESTAMP    not null,
+    data_fim      TIMESTAMP    not null,
+    local_evento  VARCHAR(255) not null,
+    capacidade    INTEGER      not null,
+    organizador   VARCHAR(255) not null,
+    tipo_evento   VARCHAR(50)
 )
