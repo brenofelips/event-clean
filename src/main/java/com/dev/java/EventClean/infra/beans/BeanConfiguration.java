@@ -8,7 +8,6 @@ import com.dev.java.EventClean.core.usecases.CriarEventoUsecaseImpl;
 import com.dev.java.EventClean.core.usecases.FiltraPorIdentificadorUsecase;
 import com.dev.java.EventClean.core.usecases.FiltraPorIdentificadorUsecaseImpl;
 import com.dev.java.EventClean.core.services.IdentificadorGenerator;
-import com.dev.java.EventClean.core.services.IdentificadorGeneratorImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -28,10 +27,5 @@ public class BeanConfiguration {
   @Bean
   public FiltraPorIdentificadorUsecase filtraPorIdentificadorUsecase(EventGateway eventGateway) {
     return new FiltraPorIdentificadorUsecaseImpl(eventGateway);
-  }
-
-  @Bean
-  public IdentificadorGenerator identificadorGenerator() {
-    return new IdentificadorGeneratorImpl();
   }
 }
