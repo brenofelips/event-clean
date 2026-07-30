@@ -6,6 +6,7 @@ import com.dev.java.EventClean.infra.mapper.EventEntityMapper;
 import com.dev.java.EventClean.infra.persistence.EventEntity;
 import com.dev.java.EventClean.infra.persistence.EventReporsitory;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -33,7 +34,7 @@ public class EventRepositoryGateway implements EventGateway {
   }
 
   @Override
-  public Event buscarEventoPorIdentificador(String identificador) {
-    return eventReporsitory.findAllByIdentificador(identificador);
+  public Optional<Event> buscarEventoPorIdentificador(String identificador) {
+    return Optional.ofNullable(eventReporsitory.findAllByIdentificador(identificador));
   }
 }

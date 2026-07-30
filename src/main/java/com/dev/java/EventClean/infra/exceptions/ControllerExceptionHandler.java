@@ -1,6 +1,7 @@
 package com.dev.java.EventClean.infra.exceptions;
 
 import com.dev.java.EventClean.core.exceptions.DuplicateKeyException;
+import com.dev.java.EventClean.core.exceptions.NotFoundIdentificadorException;
 import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,5 +15,11 @@ public class ControllerExceptionHandler {
   public ResponseEntity<Map<String, String>> handleDuplicateKeyException(DuplicateKeyException e) {
     Map<String, String> response = Map.of("error", "Identificador duplciado", "message", e.getMessage());
     return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
+  }
+
+  @ExceptionHandler(NotFoundIdentificadorException.class)
+  public ResponseEntity<Map<String, String>> handleNotFoundIdentificadorException(NotFoundIdentificadorException e) {
+    Map<String, String> response = Map.of("error", "Identificador não foi encontrado", "message", e.getMessage());
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
   }
 }
