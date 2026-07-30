@@ -20,6 +20,6 @@ public class ControllerExceptionHandler {
   @ExceptionHandler(NotFoundIdentificadorException.class)
   public ResponseEntity<Map<String, String>> handleNotFoundIdentificadorException(NotFoundIdentificadorException e) {
     Map<String, String> response = Map.of("error", "Identificador não foi encontrado", "message", e.getMessage());
-    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+    return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
   }
 }
