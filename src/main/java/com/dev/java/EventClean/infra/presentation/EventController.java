@@ -8,6 +8,7 @@ import com.dev.java.EventClean.infra.dtos.EventDto;
 import com.dev.java.EventClean.infra.mapper.EventDtoMapper;
 import java.util.List;
 import java.util.Map;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,20 +18,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/v1/")
 public class EventController {
   private final CriarEventoUsecase criarEventoUsecase;
   private final BuscarEventoUsecase buscarEventoUsecase;
   private final FiltraPorIdentificadorUsecase filtraPorIdentificadorUsecase;
   private final EventDtoMapper mapper;
-
-  public EventController(CriarEventoUsecase criarEventoUsecase, BuscarEventoUsecase buscarEventoUsecase,
-                         FiltraPorIdentificadorUsecase filtraPorIdentificadorUsecase, EventDtoMapper mapper) {
-    this.criarEventoUsecase = criarEventoUsecase;
-    this.buscarEventoUsecase = buscarEventoUsecase;
-    this.filtraPorIdentificadorUsecase = filtraPorIdentificadorUsecase;
-    this.mapper = mapper;
-  }
 
   @PostMapping("criar-evento")
   public ResponseEntity<Map<String, Object>> criarEvento(@RequestBody EventDto dto) {
