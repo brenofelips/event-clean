@@ -21,9 +21,18 @@ public class CriarEventoUsecaseImpl implements CriarEventoUsecase {
   public Event execute(Event event) {
     List<Event> events = eventGateway.buscarEventos();
     checkIdentificadorEventoDuplicado(events, event);
-    Event eventWithRandom = new Event(event.id(), event.nome(), event.descricao(),
-        identificadorGenerator.generate(), event.dataInicio(), event.dataFim(),
-        event.localEvento(), event.capacidade(), event.organizador(), event.tipoEvento());
+    Event eventWithRandom = new Event(
+        event.id(),
+        event.nome(),
+        event.descricao(),
+        identificadorGenerator.generate(),
+        event.dataInicio(),
+        event.dataFim(),
+        event.localEvento(),
+        event.capacidade(),
+        event.organizador(),
+        event.tipoEvento()
+    );
     return eventGateway.criarEvento(eventWithRandom);
   }
 
